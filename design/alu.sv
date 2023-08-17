@@ -25,6 +25,12 @@ module alu#(
 		    ALUResult = SrcA | SrcB;
             4'b0110:
 		    ALUResult = SrcA - SrcB;
+	    4'b0111:
+	            ALUResult = SrcA >>> SrcB;
+            4'b0101:
+                    ALUResult = SrcA >> SrcB;
+            4'b0100:
+                    ALUResult = SrcA << SrcB;
             default:
                     ALUResult = 0;
             endcase
