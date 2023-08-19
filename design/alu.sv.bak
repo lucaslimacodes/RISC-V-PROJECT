@@ -37,6 +37,12 @@ module alu#(
                     ALUResult = SrcA ^ SrcB;
             4'b1001:
                     ALUResult = (SrcA != SrcB) ? 1 : 0;
+            4'b1010:
+                    ALUResult = (SrcA < SrcB) ? 1 : 0;
+            4'b1011:
+                    ALUResult = (SrcA >= SrcB) ? 1 : 0;
+            4'b1110:
+                    ALUResult = SrcB + SrcA;
             default:
                     ALUResult = 0;
             endcase
