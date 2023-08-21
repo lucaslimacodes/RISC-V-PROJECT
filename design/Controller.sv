@@ -27,13 +27,14 @@ module Controller (
   assign BR = 7'b1100011;  //beq
   assign I_TYPE = 7'b0010011;
   assign U_TYPE = 7'b0110111; //LUI 
+  assign JAL = 7'b1101111;
 
-  assign ALUSrc = (Opcode == LW || Opcode == SW || Opcode == I_TYPE || U_TYPE);
+  assign ALUSrc = (Opcode == LW || Opcode == SW || Opcode == I_TYPE || Opcode == U_TYPE || Opcode == JAL);
   assign MemtoReg = (Opcode == LW);
   assign RegWrite = (Opcode == R_TYPE || Opcode == LW || Opcode == I_TYPE || Opcode == U_TYPE);
   assign MemRead = (Opcode == LW);
   assign MemWrite = (Opcode == SW);
   assign ALUOp[0] = (Opcode == BR || Opcode == U_TYPE);
   assign ALUOp[1] = (Opcode == R_TYPE || Opcode == I_TYPE || Opcode == U_TYPE);
-  assign Branch = (Opcode == BR);
+  assign Branch = (Opcode == BR || Opcode == JAL);
 endmodule
