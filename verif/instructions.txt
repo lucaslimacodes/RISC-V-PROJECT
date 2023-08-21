@@ -1,4 +1,5 @@
 addi x5,x0,257
 sw x5,0(x0)
 lb x6,0(x0)
+halt
 lh x7,0(x0)

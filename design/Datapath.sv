@@ -51,7 +51,9 @@ module Datapath #(
   logic [DATA_W-1:0] FAmux_Result;
   logic [DATA_W-1:0] FBmux_Result;
   logic Reg_Stall;  //1: PC fetch same, Register not update
+  logic [8:0] sla;
 
+  assign sla = (Instr[6:0] == 7'b0000000) ? 9'b0 : 9'b000000100;
   if_id_reg A;
   id_ex_reg B;
   ex_mem_reg C;
@@ -60,7 +62,7 @@ module Datapath #(
   // next PC
   adder #(9) pcadd (
       PC,
-      9'b100,
+      sla,
       PCPlus4
   );
   mux2 #(9) pcmux (
