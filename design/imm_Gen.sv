@@ -13,7 +13,7 @@ module imm_Gen (
        
 
       7'b0010011: //I-type operations 
-      if(inst_code[14:12]!=3'b001 && inst_code[14:12]!=3'b101) Imm_out = {inst_code[31] ? 20'hFFFFF : 20'b0, inst_code[31:20]};	// all operations besides I-type shifts
+	      if(inst_code[14:12]!=3'b001 && inst_code[14:12]!=3'b101) Imm_out = {inst_code[31] ? 20'hFFFFF : 20'b0, inst_code[31:20]};	// all operations except I-type shifts
       else Imm_out = {27'b0, inst_code[24:20]}; //I-type shift operations
 
 
