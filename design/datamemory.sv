@@ -42,7 +42,7 @@ module datamemory #(
         rd <= {Dataout[7] ? 24'hFFFFF : 24'b0, Dataout[7:0]};
         3'b001: //LH
         rd <= {Dataout[15] ? 16'hFFFFF : 16'b0, Dataout[15:0]};
-	3'b100: begin  //LBU
+	3'b100: //LBU
 	rd <= {24'b0 ,Dataout[7:0]}; 
         default: rd <= Dataout;
       endcase
